@@ -1,7 +1,5 @@
 package opgave01;
 
-import java.util.Scanner;
-
 public class Opgave01 {
     public static void main(String[] args) {
         int[] integerArray = getIntegerArray(); //Hent array
@@ -11,6 +9,7 @@ public class Opgave01 {
             System.out.println("Opgave1A " + integerArray[i]);
             System.out.println();
         }
+
 
         int sumOfArray = sum(integerArray);
         System.out.println("Opgave 1B " + "Sum af alle array integers: " + sumOfArray);
@@ -27,7 +26,13 @@ public class Opgave01 {
         // Udskriv resultatet
         int tværsum = sumDigits(sumOfArray);
         System.out.println("Opgave 1D " + "Summen af cifrene i " + sumOfArray + " tværsummen er: " + tværsum);
+        System.out.println();
+        //Print opgave E
 
+        int[] frekvens = BeregnTværsumFrekvens(integerArray);
+        for (int i = 0; i < frekvens.length; i++) {
+            System.out.println("Opgave 1E" + " Tværsum " + (i + 1) + ": " + frekvens[i] + " gange");
+        }
     }
 
 
@@ -81,6 +86,43 @@ public class Opgave01 {
 
         return tværsum;
     }
+
+    //Opgave E
+
+
+//metoden der beregner tværsum af et tal
+    private static int getSingleDigits(int number) {
+        while (number >= 10) {
+            number = tværSum(number);
+        }
+
+        return number;
+    }
+
+    //metoden der beregner tværsum af tal
+
+    private static int tværSum(int number) {
+        int sum = 0;
+        while (number > 0) {
+            sum += number % 10; //Brug de sidste cifre og læg til summen
+            number /= 10; //fjern de sidste ciffre.
+        }
+        return sum;
+    }
+
+    //Metoden til at udregne antallet af tværsum resultater for tal i et array
+    public static int [] BeregnTværsumFrekvens(int[] integerArray) {
+        int [] frekvens = new int [9];
+
+        for (int number : integerArray) {
+            int enCifretsum = getSingleDigits(number);
+            frekvens[enCifretsum - 1]++; //Øg tælleren for det tilsvarede ciffer [1 bliver [0] 9 bliver 8
+        }
+return frekvens;
+
+    }
+
+
 
 }
 

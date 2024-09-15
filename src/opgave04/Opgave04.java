@@ -7,8 +7,26 @@ public class Opgave04 {
     }
 
     private static int romanNumberToArabicNumber(char[] romanNumber) {
-        //Din implementering her.
-        return 0;
+        //Din implementering her. - array fra højre til venstre
+       int total = 0;
+       int prevValue = 0;
+
+        for (int i = romanNumber.length - 1; i >= 0; i--) {
+            char romanChar = romanNumber[i];
+            int currentValue = SingleRomanNumberToArabicNumber(romanChar);
+
+            // Hvis den nuværende værdi er større eller lig med den tidligere værrdi, plus det. hvis ikke minus det
+            if (currentValue >= prevValue) {
+                total += currentValue;
+            } else {
+                total -= currentValue;
+            }
+
+            //Opdater den tidligere værdi for det næste loop
+            prevValue = currentValue;
+        }
+
+        return total;
     }
 
     private static int SingleRomanNumberToArabicNumber(char roman) {
