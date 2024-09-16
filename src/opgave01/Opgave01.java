@@ -1,5 +1,7 @@
 package opgave01;
 
+import java.awt.print.PrinterGraphics;
+
 public class Opgave01 {
     public static void main(String[] args) {
         int[] integerArray = getIntegerArray(); //Hent array
@@ -9,7 +11,6 @@ public class Opgave01 {
             System.out.println("Opgave1A " + integerArray[i]);
             System.out.println();
         }
-
 
         int sumOfArray = sum(integerArray);
         System.out.println("Opgave 1B " + "Sum af alle array integers: " + sumOfArray);
@@ -33,8 +34,8 @@ public class Opgave01 {
         for (int i = 0; i < frekvens.length; i++) {
             System.out.println("Opgave 1E" + " Tværsum " + (i + 1) + ": " + frekvens[i] + " gange");
         }
-    }
 
+    }
 
     private static int[] getIntegerArray() {
         int[] integerArray = {1095, 12, 9065, 387, 700, 20, 5, 2065, 97654, 103, 789, 50, 1972, 200, 35, 98, 1002};
@@ -88,8 +89,6 @@ public class Opgave01 {
     }
 
     //Opgave E
-
-
 //metoden der beregner tværsum af et tal
     private static int getSingleDigits(int number) {
         while (number >= 10) {
@@ -112,7 +111,7 @@ public class Opgave01 {
 
     //Metoden til at udregne antallet af tværsum resultater for tal i et array
     public static int [] BeregnTværsumFrekvens(int[] integerArray) {
-        int [] frekvens = new int [9];
+        int [] frekvens = new int [integerArray.length];
 
         for (int number : integerArray) {
             int enCifretsum = getSingleDigits(number);
@@ -121,9 +120,4 @@ public class Opgave01 {
 return frekvens;
 
     }
-
-
-
 }
-
-
